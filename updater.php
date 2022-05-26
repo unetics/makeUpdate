@@ -70,7 +70,6 @@ if (!class_exists('makeUpdate')) {
         }
 
         public function plugins_api_result($res, $action, $args){
-            custom_logs($args);
             if ($action == 'plugin_information') {
                 if (isset($args->slug) && $args->slug == plugin_basename($this->plugin_file)) {
                     $info = $this->get_license_info();
@@ -84,8 +83,8 @@ if (!class_exists('makeUpdate')) {
                         'last_updated' => isset($info->last_updated) ? $info->last_updated : '',
                         'homepage' => isset($info->description_url) ? $info->description_url : '',
                         'sections' => array(
-                            'description' => $info->description,
-                            'changelog' => 'Changy Mc-Changechange'
+                            'description' => $info->description_url,
+                            'changelog' => $info->description
                         ),
                         'banners' => array(
                             'low' => isset($info->banner_low) ? $info->banner_low : '',
@@ -116,8 +115,8 @@ if (!class_exists('makeUpdate')) {
                         'last_updated' => isset($info->last_updated) ? $info->last_updated : '',
                         'homepage' => isset($info->description_url) ? $info->description_url : '',
                         'sections' => array(
-                            'description' => $info->description,
-                            'changelog' => 'Changy Mc-Changechange'
+                            'description' => $info->description_url,
+                            'changelog' => $info->description
                         ),
                         'banners' => array(
                             'low' => isset($info->banner_low) ? $info->banner_low : '',
